@@ -56,287 +56,286 @@ body{font-family:'Noto Sans JP','Helvetica Neue',Arial,sans-serif;background:var
 <body>
 <div id="tip"></div>
 <div class="ct">
-  <!-- ヘッダー -->
-  <div class="card" style="margin-bottom:20px"><div style="padding:16px 22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px"><div style="display:flex;align-items:center;gap:14px"><div style="width:4px;height:24px;border-radius:2px;background:var(--p);flex-shrink:0"></div><h1 style="font-size:18px;font-weight:800;letter-spacing:-.3px;white-space:nowrap">アフィリエイト経由売上 分析ダッシュボード</h1></div><div style="display:flex;gap:8px;align-items:center"><a href="https://drive.google.com/drive/folders/10lAeGgnL8leiM4cRL_OdO5Xo7We_6yFZ?usp=drive_link" target="_blank" class="rb" style="background:#10B981;color:#fff;border:none;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:4px">📂 データフォルダ</a><button class="rb" id="manualBtn" onclick="document.getElementById('manualModal').style.display='flex'" style="background:var(--p);color:#fff;border:none;font-weight:700">📖 使い方マニュアル</button><button class="rb hd" id="rst" onclick="reset()">リセット</button></div></div></div>
+ <!-- ヘッダー -->
+ <div class="card" style="margin-bottom:20px"><div style="padding:16px 22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px"><div style="display:flex;align-items:center;gap:14px"><div style="width:4px;height:24px;border-radius:2px;background:var(--p);flex-shrink:0"></div><h1 style="font-size:18px;font-weight:800;letter-spacing:-.3px;white-space:nowrap">アフィリエイト経由売上 分析ダッシュボード</h1></div><div style="display:flex;gap:8px;align-items:center"><a href="https://drive.google.com/drive/folders/10lAeGgnL8leiM4cRL_OdO5Xo7We_6yFZ?usp=drive_link" target="_blank" class="rb" style="background:#10B981;color:#fff;border:none;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:4px">データフォルダ</a><button class="rb" id="manualBtn" onclick="document.getElementById('manualModal').style.display='flex'" style="background:var(--p);color:#fff;border:none;font-weight:700">使い方マニュアル</button><button class="rb hd" id="rst" onclick="reset()">リセット</button></div></div></div>
 
-  <!-- ===== 使い方マニュアル（モーダル） ===== -->
-  <div id="manualModal" style="display:none;position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.55);align-items:center;justify-content:center;padding:16px" onclick="if(event.target===this)this.style.display='none'">
-    <div style="background:#fff;border-radius:14px;max-width:780px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.25);position:relative">
-      <!-- 閉じるボタン -->
-      <button onclick="document.getElementById('manualModal').style.display='none'" style="position:sticky;top:0;float:right;margin:12px 12px 0 0;width:36px;height:36px;border-radius:50%;border:none;background:var(--g100);font-size:18px;cursor:pointer;z-index:1;color:var(--g500);font-weight:700">✕</button>
+ <!-- ===== 使い方マニュアル（モーダル） ===== -->
+ <div id="manualModal" style="display:none;position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.55);align-items:center;justify-content:center;padding:16px" onclick="if(event.target===this)this.style.display='none'">
+   <div style="background:#fff;border-radius:14px;max-width:780px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.25);position:relative">
+     <!-- 閉じるボタン -->
+     <button onclick="document.getElementById('manualModal').style.display='none'" style="position:sticky;top:0;float:right;margin:12px 12px 0 0;width:36px;height:36px;border-radius:50%;border:none;background:var(--g100);font-size:18px;cursor:pointer;z-index:1;color:var(--g500);font-weight:700">×</button>
 
-      <div style="padding:32px 32px 28px">
-        <!-- タイトル -->
-        <div style="text-align:center;margin-bottom:28px">
-          <div style="font-size:28px;margin-bottom:6px">📖</div>
-          <div style="font-size:20px;font-weight:800;color:var(--p);letter-spacing:-.3px">使い方マニュアル</div>
-          <div style="font-size:12px;color:var(--g400);margin-top:4px">初めての方でも3ステップで分析スタート</div>
-        </div>
+     <div style="padding:32px 32px 28px">
+       <!-- タイトル -->
+       <div style="text-align:center;margin-bottom:28px">
+         <div style="font-size:28px;margin-bottom:6px"></div>
+         <div style="font-size:20px;font-weight:800;color:var(--p);letter-spacing:-.3px">使い方マニュアル</div>
+         <div style="font-size:12px;color:var(--g400);margin-top:4px">初めての方でも3ステップで分析スタート</div>
+       </div>
 
-        <!-- ===== 全体の流れ ===== -->
-        <div style="background:linear-gradient(135deg,#EEF2FF,#DBEAFE);border-radius:10px;padding:18px 20px;margin-bottom:24px">
-          <div style="font-size:13px;font-weight:700;color:var(--p);margin-bottom:10px">🚀 全体の流れ（たった3ステップ）</div>
-          <div style="display:flex;gap:10px;flex-wrap:wrap">
-            <div style="flex:1;min-width:160px;background:#fff;border-radius:8px;padding:14px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.06)">
-              <div style="font-size:24px;margin-bottom:4px">①</div>
-              <div style="font-size:12px;font-weight:700;color:var(--g900)">楽天RMSから<br>CSVダウンロード</div>
+       <!-- ===== 全体の流れ ===== -->
+       <div style="background:linear-gradient(135deg,#EEF2FF,#DBEAFE);border-radius:10px;padding:18px 20px;margin-bottom:24px">
+         <div style="font-size:13px;font-weight:700;color:var(--p);margin-bottom:10px">全体の流れ（たった3ステップ）</div>
+         <div style="display:flex;gap:10px;flex-wrap:wrap">
+           <div style="flex:1;min-width:160px;background:#fff;border-radius:8px;padding:14px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.06)">
+             <div style="font-size:24px;margin-bottom:4px">①</div>
+             <div style="font-size:12px;font-weight:700;color:var(--g900)">楽天RMSから<br>CSVダウンロード</div>
+           </div>
+           <div style="display:flex;align-items:center;font-size:20px;color:var(--g300)">→</div>
+           <div style="flex:1;min-width:160px;background:#fff;border-radius:8px;padding:14px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.06)">
+             <div style="font-size:24px;margin-bottom:4px">②</div>
+             <div style="font-size:12px;font-weight:700;color:var(--g900)">ファイルを準備<br>（直接 or Gドライブ）</div>
+           </div>
+           <div style="display:flex;align-items:center;font-size:20px;color:var(--g300)">→</div>
+           <div style="flex:1;min-width:160px;background:#fff;border-radius:8px;padding:14px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.06)">
+             <div style="font-size:24px;margin-bottom:4px">③</div>
+             <div style="font-size:12px;font-weight:700;color:var(--g900)">ダッシュボードで<br>自動分析！</div>
+           </div>
+         </div>
+       </div>
+
+       <!-- ===== STEP 1: データの準備 ===== -->
+       <div style="margin-bottom:24px">
+         <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">
+           <span style="background:var(--p);color:#fff;font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px">STEP 1</span>
+           <span style="font-size:15px;font-weight:800;color:var(--g900)">Googleドライブにデータを準備する</span>
+         </div>
+
+         <!-- 対応データとタブの関係 -->
+         <div style="background:#fff;border:1px solid var(--g200);border-radius:10px;padding:16px 18px;margin-bottom:14px">
+           <div style="font-size:12px;font-weight:700;color:var(--g700);margin-bottom:10px">各タブとデータの対応</div>
+           <div style="display:grid;gap:8px">
+             <div style="display:flex;gap:10px;align-items:center;padding:10px 14px;background:var(--pl);border-radius:8px;border-left:3px solid var(--p)">
+               <span style="font-size:11px;font-weight:700;color:var(--p);min-width:80px">概要タブ</span>
+               <span style="font-size:11px;color:var(--g700)">← <strong>summary.csv</strong>（全成果レポート＋料率アップレポートの月次サマリー）</span>
+             </div>
+             <div style="display:flex;gap:10px;align-items:center;padding:10px 14px;background:var(--al);border-radius:8px;border-left:3px solid var(--a)">
+               <span style="font-size:11px;font-weight:700;color:var(--a);min-width:80px">商品分析タブ</span>
+               <span style="font-size:11px;color:var(--g700)">← <strong>pending_YYMM.csv</strong>（成果発生 注文一覧 × 月ごと）</span>
+             </div>
+             <div style="display:flex;gap:10px;align-items:center;padding:10px 14px;background:#FEF3C7;border-radius:8px;border-left:3px solid #F59E0B">
+               <span style="font-size:11px;font-weight:700;color:#F59E0B;min-width:80px">パートナータブ</span>
+               <span style="font-size:11px;color:var(--g700)">← <strong>パートナーRP</strong>（成果速報ーパートナー別 × 月ごと）</span>
+             </div>
+           </div>
+         </div>
+
+         <!-- フォルダの作成先 -->
+         <div style="background:#FEF3C7;border:1px solid #FCD34D;border-radius:10px;padding:16px 18px;margin-bottom:14px">
+           <div style="font-size:12px;font-weight:700;color:#92400E;margin-bottom:8px">フォルダの作成先</div>
+           <div style="font-size:11px;color:#92400E;line-height:1.8">
+Googleドライブの <strong>「【2】クライアント」</strong>内の各クライアントフォルダに <strong>「アフィリエイト分析」</strong>フォルダを作成してください。<br>
+             <a href="https://drive.google.com/drive/folders/1CwFlbOgrNO4d4Dijzx_wUUqV2njMf5lr" target="_blank" style="color:#1E40AF;font-weight:700;text-decoration:underline">→ 参考：フォルダ構成の例を見る</a>
+           </div>
+         </div>
+
+         <!-- Googleドライブのフォルダ構成 -->
+         <div style="background:var(--pl);border-radius:10px;padding:16px 18px;border:1px solid rgba(30,58,95,.13);margin-bottom:14px">
+           <div style="font-size:12px;font-weight:700;color:var(--p);margin-bottom:10px">Googleドライブのフォルダ構成</div>
+           <div style="background:#fff;border-radius:8px;padding:14px 16px;font-family:monospace;font-size:12px;line-height:2;color:var(--g700)">
+             <span style="color:var(--g400)">【2】クライアント/</span><br>
+└ <span style="color:var(--g400)">クライアント名/</span><br>
+&nbsp;&nbsp;&nbsp;└ <strong style="color:var(--p)">アフィリエイト分析</strong>　← このフォルダを選択<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├ <strong style="color:var(--p)">概要(summary)</strong><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;└  summary.csv　← 概要タブ用<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├ <strong style="color:var(--a)">注文一覧（pending）</strong><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;├  pending_2511.csv<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;├  ...<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;└  pending_2604.csv　← 商品分析タブ用<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└ <strong style="color:#F59E0B">パートナーRP</strong><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├  パートナー_2504.csv<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├  ...<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└  パートナー_2603.csv　← パートナータブ用
             </div>
-            <div style="display:flex;align-items:center;font-size:20px;color:var(--g300)">→</div>
-            <div style="flex:1;min-width:160px;background:#fff;border-radius:8px;padding:14px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.06)">
-              <div style="font-size:24px;margin-bottom:4px">②</div>
-              <div style="font-size:12px;font-weight:700;color:var(--g900)">ファイルを準備<br>（直接 or Gドライブ）</div>
-            </div>
-            <div style="display:flex;align-items:center;font-size:20px;color:var(--g300)">→</div>
-            <div style="flex:1;min-width:160px;background:#fff;border-radius:8px;padding:14px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.06)">
-              <div style="font-size:24px;margin-bottom:4px">③</div>
-              <div style="font-size:12px;font-weight:700;color:var(--g900)">ダッシュボードで<br>自動分析！</div>
-            </div>
-          </div>
-        </div>
+         </div>
 
-        <!-- ===== STEP 1: データの準備 ===== -->
-        <div style="margin-bottom:24px">
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">
-            <span style="background:var(--p);color:#fff;font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px">STEP 1</span>
-            <span style="font-size:15px;font-weight:800;color:var(--g900)">Googleドライブにデータを準備する</span>
-          </div>
+         <!-- 各データの取得方法 -->
+         <div style="font-size:12px;font-weight:700;color:var(--g700);margin-bottom:10px">各データの取得方法</div>
+         <div style="display:grid;gap:10px">
 
-          <!-- 対応データとタブの関係 -->
-          <div style="background:#fff;border:1px solid var(--g200);border-radius:10px;padding:16px 18px;margin-bottom:14px">
-            <div style="font-size:12px;font-weight:700;color:var(--g700);margin-bottom:10px">📋 各タブとデータの対応</div>
-            <div style="display:grid;gap:8px">
-              <div style="display:flex;gap:10px;align-items:center;padding:10px 14px;background:var(--pl);border-radius:8px;border-left:3px solid var(--p)">
-                <span style="font-size:11px;font-weight:700;color:var(--p);min-width:80px">概要タブ</span>
-                <span style="font-size:11px;color:var(--g700)">← <strong>summary.csv</strong>（全成果レポート＋料率アップレポートの月次サマリー）</span>
-              </div>
-              <div style="display:flex;gap:10px;align-items:center;padding:10px 14px;background:var(--al);border-radius:8px;border-left:3px solid var(--a)">
-                <span style="font-size:11px;font-weight:700;color:var(--a);min-width:80px">商品分析タブ</span>
-                <span style="font-size:11px;color:var(--g700)">← <strong>pending_YYMM.csv</strong>（成果発生 注文一覧 × 月ごと）</span>
-              </div>
-              <div style="display:flex;gap:10px;align-items:center;padding:10px 14px;background:#FEF3C7;border-radius:8px;border-left:3px solid #F59E0B">
-                <span style="font-size:11px;font-weight:700;color:#F59E0B;min-width:80px">パートナータブ</span>
-                <span style="font-size:11px;color:var(--g700)">← <strong>パートナーRP</strong>（成果速報ーパートナー別 × 月ごと）</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- フォルダの作成先 -->
-          <div style="background:#FEF3C7;border:1px solid #FCD34D;border-radius:10px;padding:16px 18px;margin-bottom:14px">
-            <div style="font-size:12px;font-weight:700;color:#92400E;margin-bottom:8px">📌 フォルダの作成先</div>
-            <div style="font-size:11px;color:#92400E;line-height:1.8">
-              Googleドライブの <strong>「【2】クライアント」</strong> 内の各クライアントフォルダに <strong>「アフィリエイト分析」</strong> フォルダを作成してください。<br>
-              <a href="https://drive.google.com/drive/folders/1CwFlbOgrNO4d4Dijzx_wUUqV2njMf5lr" target="_blank" style="color:#1E40AF;font-weight:700;text-decoration:underline">→ 参考：フォルダ構成の例を見る</a>
-            </div>
-          </div>
-
-          <!-- Googleドライブのフォルダ構成 -->
-          <div style="background:var(--pl);border-radius:10px;padding:16px 18px;border:1px solid rgba(30,58,95,.13);margin-bottom:14px">
-            <div style="font-size:12px;font-weight:700;color:var(--p);margin-bottom:10px">📁 Googleドライブのフォルダ構成</div>
-            <div style="background:#fff;border-radius:8px;padding:14px 16px;font-family:monospace;font-size:12px;line-height:2;color:var(--g700)">
-              <span style="color:var(--g400)">【2】クライアント/</span><br>
-              └ <span style="color:var(--g400)">📂 クライアント名/</span><br>
-              &nbsp;&nbsp;&nbsp;└ <strong style="color:var(--p)">📂 アフィリエイト分析</strong>　← このフォルダを選択<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├ <strong style="color:var(--p)">📂 概要(summary)</strong><br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;└ 📄 summary.csv　← 概要タブ用<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├ <strong style="color:var(--a)">📂 注文一覧（pending）</strong><br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;├ 📄 pending_2511.csv<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;├ 📄 ...<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;└ 📄 pending_2604.csv　← 商品分析タブ用<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└ <strong style="color:#F59E0B">📂 パートナーRP</strong><br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├ 📄 パートナー_2504.csv<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├ 📄 ...<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└ 📄 パートナー_2603.csv　← パートナータブ用
-            </div>
-          </div>
-
-          <!-- 各データの取得方法 -->
-          <div style="font-size:12px;font-weight:700;color:var(--g700);margin-bottom:10px">📥 各データの取得方法</div>
-          <div style="display:grid;gap:10px">
-
-            <!-- summary.csv -->
-            <div style="background:#fff;border:1px solid var(--g200);border-radius:10px;overflow:hidden">
-              <div style="background:var(--p);color:#fff;padding:8px 16px;display:flex;align-items:center;gap:8px">
-                <span style="font-size:13px;font-weight:700">❶ summary.csv（概要タブ用）</span>
-              </div>
-              <div style="padding:14px 16px">
-                <div style="font-size:11px;color:var(--g500);line-height:1.7;margin-bottom:10px">
-                  「全成果レポート」「料率アップレポート」の月次データをまとめたスプレッドシート。<br>
-                  列: 月 / クリック / 売上金額 / 件数 / 成果報酬 / 売上(料率UP) / 件数(料率UP) / 報酬(料率UP)
+           <!-- summary.csv -->
+           <div style="background:#fff;border:1px solid var(--g200);border-radius:10px;overflow:hidden">
+             <div style="background:var(--p);color:#fff;padding:8px 16px;display:flex;align-items:center;gap:8px">
+               <span style="font-size:13px;font-weight:700">1. summary.csv（概要タブ用）</span>
+             </div>
+             <div style="padding:14px 16px">
+               <div style="font-size:11px;color:var(--g500);line-height:1.7;margin-bottom:10px">
+「全成果レポート」「料率アップレポート」の月次データをまとめたスプレッドシート。<br>
+列: 月 / クリック / 売上金額 / 件数 / 成果報酬 / 売上(料率UP) / 件数(料率UP) / 報酬(料率UP)
                 </div>
-                <div style="background:var(--g50);border-radius:8px;padding:10px 14px;font-size:11px;line-height:1.8">
-                  <strong style="color:var(--p)">作成手順：</strong><br>
-                  ① RMSの <span style="background:#8B2525;color:#fff;padding:1px 6px;border-radius:3px;font-size:10px;font-weight:700">成果速報ー期間別</span> タブを開く<br>
-                  ② 「月別レポート」に切り替え<br>
-                  ③ 全成果レポート・料率アップレポートの数値を<strong>Googleスプレッドシートにコピペ</strong><br>
-                  ④ 新しい月が出たら行を追加して更新<br>
-                  💡 GoogleスプレッドシートでもCSVでもどちらでもOK（自動判別）
+               <div style="background:var(--g50);border-radius:8px;padding:10px 14px;font-size:11px;line-height:1.8">
+                 <strong style="color:var(--p)">作成手順：</strong><br>
+① RMSの <span style="background:#8B2525;color:#fff;padding:1px 6px;border-radius:3px;font-size:10px;font-weight:700">成果速報ー期間別</span>タブを開く<br>
+② 「月別レポート」に切り替え<br>
+③ 全成果レポート・料率アップレポートの数値を<strong>Googleスプレッドシートにコピペ</strong><br>
+④ 新しい月が出たら行を追加して更新<br>
+GoogleスプレッドシートでもCSVでもどちらでもOK（自動判別）
                 </div>
-              </div>
-            </div>
+             </div>
+           </div>
 
-            <!-- pending CSV -->
-            <div style="background:#fff;border:1px solid var(--g200);border-radius:10px;overflow:hidden">
-              <div style="background:var(--a);color:#fff;padding:8px 16px;display:flex;align-items:center;gap:8px">
-                <span style="font-size:13px;font-weight:700">❷ pending_YYMM.csv（商品分析タブ用）</span>
-              </div>
-              <div style="padding:14px 16px">
-                <div style="font-size:11px;color:var(--g500);line-height:1.7;margin-bottom:10px">
-                  注文ごとの明細データ（商品名・売上金額・料率・成果報酬・ステータスなど）。<br>
-                  月ごとにCSVをダウンロードしてフォルダに格納します。
+           <!-- pending CSV -->
+           <div style="background:#fff;border:1px solid var(--g200);border-radius:10px;overflow:hidden">
+             <div style="background:var(--a);color:#fff;padding:8px 16px;display:flex;align-items:center;gap:8px">
+               <span style="font-size:13px;font-weight:700">2. pending_YYMM.csv（商品分析タブ用）</span>
+             </div>
+             <div style="padding:14px 16px">
+               <div style="font-size:11px;color:var(--g500);line-height:1.7;margin-bottom:10px">
+注文ごとの明細データ（商品名・売上金額・料率・成果報酬・ステータスなど）。<br>
+月ごとにCSVをダウンロードしてフォルダに格納します。
                 </div>
-                <div style="background:var(--g50);border-radius:8px;padding:10px 14px;font-size:11px;line-height:1.8">
-                  <strong style="color:var(--a)">ダウンロード手順：</strong><br>
-                  ① RMSの <span style="background:#8B2525;color:#fff;padding:1px 6px;border-radius:3px;font-size:10px;font-weight:700">成果速報ー注文一覧</span> タブを開く<br>
-                  ② 左上の日付欄で対象月を選択（例: <code>2026-04</code>）<br>
-                  ③ 右上の <strong>⬇ ダウンロードボタン</strong> をクリック<br>
-                  ④ ダウンロードしたCSVをGoogleドライブの <strong>注文一覧（pending）</strong> フォルダに格納<br>
-                  ⚠️ <strong>月ごとにダウンロード</strong>が必要です（毎月繰り返し）
+               <div style="background:var(--g50);border-radius:8px;padding:10px 14px;font-size:11px;line-height:1.8">
+                 <strong style="color:var(--a)">ダウンロード手順：</strong><br>
+① RMSの <span style="background:#8B2525;color:#fff;padding:1px 6px;border-radius:3px;font-size:10px;font-weight:700">成果速報ー注文一覧</span>タブを開く<br>
+② 左上の日付欄で対象月を選択（例: <code>2026-04</code>）<br>
+③ 右上の <strong>⬇ ダウンロードボタン</strong>をクリック<br>
+④ ダウンロードしたCSVをGoogleドライブの <strong>注文一覧（pending）</strong>フォルダに格納<br>
+                  <strong>月ごとにダウンロード</strong>が必要です（毎月繰り返し）
                 </div>
-              </div>
-            </div>
+             </div>
+           </div>
 
-            <!-- パートナーRP -->
-            <div style="background:#fff;border:1px solid var(--g200);border-radius:10px;overflow:hidden">
-              <div style="background:#F59E0B;color:#fff;padding:8px 16px;display:flex;align-items:center;gap:8px">
-                <span style="font-size:13px;font-weight:700">❸ パートナーRP（パートナータブ用）</span>
-              </div>
-              <div style="padding:14px 16px">
-                <div style="font-size:11px;color:var(--g500);line-height:1.7;margin-bottom:10px">
-                  パートナー（アフィリエイター）ごとのクリック数・売上件数・売上金額・成果報酬の月次集計。<br>
-                  月ごとにCSVをダウンロードしてフォルダに格納します。
+           <!-- パートナーRP -->
+           <div style="background:#fff;border:1px solid var(--g200);border-radius:10px;overflow:hidden">
+             <div style="background:#F59E0B;color:#fff;padding:8px 16px;display:flex;align-items:center;gap:8px">
+               <span style="font-size:13px;font-weight:700">3. パートナーRP（パートナータブ用）</span>
+             </div>
+             <div style="padding:14px 16px">
+               <div style="font-size:11px;color:var(--g500);line-height:1.7;margin-bottom:10px">
+パートナー（アフィリエイター）ごとのクリック数・売上件数・売上金額・成果報酬の月次集計。<br>
+月ごとにCSVをダウンロードしてフォルダに格納します。
                 </div>
-                <div style="background:var(--g50);border-radius:8px;padding:10px 14px;font-size:11px;line-height:1.8">
-                  <strong style="color:#F59E0B">ダウンロード手順：</strong><br>
-                  ① RMSの <span style="background:#8B2525;color:#fff;padding:1px 6px;border-radius:3px;font-size:10px;font-weight:700">成果速報ーパートナー別</span> タブを開く<br>
-                  ② 左上の日付欄で対象月を選択（例: <code>2026-04</code>）<br>
-                  ③ 右側の <strong>⬇ ダウンロードボタン</strong> をクリック<br>
-                  ④ ダウンロードしたCSVをGoogleドライブの <strong>パートナーRP</strong> フォルダに格納<br>
-                  ⚠️ <strong>月ごとにダウンロード</strong>が必要です（毎月繰り返し）
+               <div style="background:var(--g50);border-radius:8px;padding:10px 14px;font-size:11px;line-height:1.8">
+                 <strong style="color:#F59E0B">ダウンロード手順：</strong><br>
+① RMSの <span style="background:#8B2525;color:#fff;padding:1px 6px;border-radius:3px;font-size:10px;font-weight:700">成果速報ーパートナー別</span>タブを開く<br>
+② 左上の日付欄で対象月を選択（例: <code>2026-04</code>）<br>
+③ 右側の <strong>⬇ ダウンロードボタン</strong>をクリック<br>
+④ ダウンロードしたCSVをGoogleドライブの <strong>パートナーRP</strong>フォルダに格納<br>
+                  <strong>月ごとにダウンロード</strong>が必要です（毎月繰り返し）
                 </div>
-              </div>
+             </div>
+           </div>
+         </div>
+
+         <!-- 注意事項 -->
+         <div style="background:#FFFBEB;border:1px solid #FCD34D;border-radius:8px;padding:14px 16px;margin-top:14px">
+           <div style="font-size:12px;font-weight:700;color:#92400E;margin-bottom:6px">ポイント</div>
+           <div style="font-size:11px;color:#92400E;line-height:1.8">
+• <strong>Googleスプレッドシート形式でもCSV形式でも</strong>自動で読み込めます<br>
+• ファイルの種類は<strong>中身のヘッダーで自動判別</strong>（ファイル名は何でもOK）<br>
+• 何ファイルでもまとめて読み込めます<br>
+• データ期間が長いほどYoY（前年比）が表示されます
             </div>
-          </div>
+         </div>
+       </div>
 
-          <!-- 注意事項 -->
-          <div style="background:#FFFBEB;border:1px solid #FCD34D;border-radius:8px;padding:14px 16px;margin-top:14px">
-            <div style="font-size:12px;font-weight:700;color:#92400E;margin-bottom:6px">💡 ポイント</div>
-            <div style="font-size:11px;color:#92400E;line-height:1.8">
-              • <strong>Googleスプレッドシート形式でもCSV形式でも</strong>自動で読み込めます<br>
-              • ファイルの種類は<strong>中身のヘッダーで自動判別</strong>（ファイル名は何でもOK）<br>
-              • 何ファイルでもまとめて読み込めます<br>
-              • データ期間が長いほどYoY（前年比）が表示されます
+       <!-- ===== STEP 2: ダッシュボードで読み込む ===== -->
+       <div style="margin-bottom:24px">
+         <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">
+           <span style="background:#4285F4;color:#fff;font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px">STEP 2</span>
+           <span style="font-size:15px;font-weight:800;color:var(--g900)">Googleドライブ連携で読み込む</span>
+         </div>
+
+         <div style="background:#EFF6FF;border-radius:10px;padding:16px 18px;border:1px solid rgba(66,133,244,.15)">
+           <div style="font-size:12px;color:#1E40AF;line-height:1.8">
+             <strong>①</strong>ダッシュボードで <strong>「Googleドライブ連携」</strong>を選択<br>
+             <strong>②</strong>Googleアカウントでログイン<br>
+             <strong>③</strong>フォルダを選択（ アフィリエイト分析）<br>
+             <strong>④</strong>「このフォルダを選択」をクリック<br>
+             <strong>⑤</strong>サブフォルダ内の全ファイルを自動で読み込み → 分析開始！
             </div>
-          </div>
-        </div>
+         </div>
+       </div>
 
-        <!-- ===== STEP 2: ダッシュボードで読み込む ===== -->
-        <div style="margin-bottom:24px">
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">
-            <span style="background:#4285F4;color:#fff;font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px">STEP 2</span>
-            <span style="font-size:15px;font-weight:800;color:var(--g900)">Googleドライブ連携で読み込む</span>
-          </div>
+       <!-- ===== STEP 3: 分析結果の見方 ===== -->
+       <div style="margin-bottom:20px">
+         <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">
+           <span style="background:#8B5CF6;color:#fff;font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px">STEP 3</span>
+           <span style="font-size:15px;font-weight:800;color:var(--g900)">分析結果の見方</span>
+         </div>
+         <div style="display:grid;gap:8px">
+           <div style="background:#fff;border:1px solid var(--g200);border-radius:8px;padding:12px 16px">
+             <div style="font-size:13px;font-weight:700;color:var(--p);margin-bottom:2px">概要タブ</div>
+             <div style="font-size:11px;color:var(--g500);line-height:1.6">KPIサマリー（総売上・件数・クリック数）、月次トレンド、MoM/YoY比較</div>
+           </div>
+           <div style="background:#fff;border:1px solid var(--g200);border-radius:8px;padding:12px 16px">
+             <div style="font-size:13px;font-weight:700;color:var(--a);margin-bottom:2px">商品分析タブ</div>
+             <div style="font-size:11px;color:var(--g500);line-height:1.6">商品別ランキング、売上構成比、各商品の月次推移（クリックで選択）</div>
+           </div>
+           <div style="background:#fff;border:1px solid var(--g200);border-radius:8px;padding:12px 16px">
+             <div style="font-size:13px;font-weight:700;color:#F59E0B;margin-bottom:2px">パートナー分析タブ</div>
+             <div style="font-size:11px;color:var(--g500);line-height:1.6">パートナー別売上ランキング、売上分布、月次推移（クリックで選択）</div>
+           </div>
+         </div>
+       </div>
 
-          <div style="background:#EFF6FF;border-radius:10px;padding:16px 18px;border:1px solid rgba(66,133,244,.15)">
-            <div style="font-size:12px;color:#1E40AF;line-height:1.8">
-              <strong>①</strong> ダッシュボードで <strong>「☁️ Googleドライブ連携」</strong> を選択<br>
-              <strong>②</strong> Googleアカウントでログイン<br>
-              <strong>③</strong> フォルダを選択（📂 アフィリエイト分析）<br>
-              <strong>④</strong> 「✅ このフォルダを選択」をクリック<br>
-              <strong>⑤</strong> サブフォルダ内の全ファイルを自動で読み込み → 分析開始！
-            </div>
-          </div>
-        </div>
+       <!-- ===== よくある質問 ===== -->
+       <div style="border-top:1px solid var(--g200);padding-top:20px">
+         <div style="font-size:14px;font-weight:800;color:var(--g900);margin-bottom:12px">よくある質問</div>
+         <div style="display:grid;gap:8px">
+           <div style="background:var(--g50);border-radius:8px;padding:12px 16px">
+             <div style="font-size:12px;font-weight:700;color:var(--g900)">Q. どの期間のデータを入れればいい？</div>
+             <div style="font-size:11px;color:var(--g500);margin-top:3px;line-height:1.6">A. できるだけ長い期間がおすすめです。2024年〜現在までのデータを入れると、前年比（YoY）が自動計算されて比較分析できます。</div>
+           </div>
+           <div style="background:var(--g50);border-radius:8px;padding:12px 16px">
+             <div style="font-size:12px;font-weight:700;color:var(--g900)">Q. 文字化けする場合は？</div>
+             <div style="font-size:11px;color:var(--g500);margin-top:3px;line-height:1.6">A. CSVアップロード時に文字コードを「UTF-8」に切り替えてください。楽天RMSのCSVは通常「Shift_JIS」ですが、環境により異なる場合があります。</div>
+           </div>
+           <div style="background:var(--g50);border-radius:8px;padding:12px 16px">
+             <div style="font-size:12px;font-weight:700;color:var(--g900)">Q. データは保存される？</div>
+             <div style="font-size:11px;color:var(--g500);margin-top:3px;line-height:1.6">A. いいえ。すべてブラウザ上で処理され、サーバーへの送信は一切ありません。ページを閉じるとデータは消えます。Google ドライブ連携の場合もブラウザから直接読み取るだけです。</div>
+           </div>
+           <div style="background:var(--g50);border-radius:8px;padding:12px 16px">
+             <div style="font-size:12px;font-weight:700;color:var(--g900)">Q. ファイルの並び順やファイル名は関係ある？</div>
+             <div style="font-size:11px;color:var(--g500);margin-top:3px;line-height:1.6">A. 関係ありません。ファイルの中身を自動で判別（成果確定/発生/パートナー/請求）します。何ファイルでも、どんな順番でもOKです。</div>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
 
-        <!-- ===== STEP 3: 分析結果の見方 ===== -->
-        <div style="margin-bottom:20px">
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">
-            <span style="background:#8B5CF6;color:#fff;font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px">STEP 3</span>
-            <span style="font-size:15px;font-weight:800;color:var(--g900)">分析結果の見方</span>
-          </div>
-          <div style="display:grid;gap:8px">
-            <div style="background:#fff;border:1px solid var(--g200);border-radius:8px;padding:12px 16px">
-              <div style="font-size:13px;font-weight:700;color:var(--p);margin-bottom:2px">📊 概要タブ</div>
-              <div style="font-size:11px;color:var(--g500);line-height:1.6">KPIサマリー（総売上・件数・クリック数）、月次トレンド、MoM/YoY比較</div>
-            </div>
-            <div style="background:#fff;border:1px solid var(--g200);border-radius:8px;padding:12px 16px">
-              <div style="font-size:13px;font-weight:700;color:var(--a);margin-bottom:2px">🛍️ 商品分析タブ</div>
-              <div style="font-size:11px;color:var(--g500);line-height:1.6">商品別ランキング、売上構成比、各商品の月次推移（クリックで選択）</div>
-            </div>
-            <div style="background:#fff;border:1px solid var(--g200);border-radius:8px;padding:12px 16px">
-              <div style="font-size:13px;font-weight:700;color:#F59E0B;margin-bottom:2px">🤝 パートナー分析タブ</div>
-              <div style="font-size:11px;color:var(--g500);line-height:1.6">パートナー別売上ランキング、売上分布、月次推移（クリックで選択）</div>
-            </div>
-          </div>
-        </div>
+ <!-- モード選択 -->
+ <div id="modeGuide" style="text-align:center;margin-bottom:16px;padding:18px 24px;background:var(--w);border-radius:10px;box-shadow:var(--sh)"><div style="font-size:18px;font-weight:800;color:var(--p);letter-spacing:-.3px">データの読み込み方法を選択してください</div><div style="font-size:12px;color:var(--g400);margin-top:4px">CSVファイルを直接アップロード、またはGoogleドライブから自動読み込み</div></div>
+ <div id="modeSelect" class="mode-sel">
+   <div class="mode-card" id="modeCSV" onclick="setMode('csv')"><div class="mc-icon"></div><div class="mc-title">CSVアップロード</div><div class="mc-desc">PCのCSVファイルを<br>ドラッグ＆ドロップ</div></div>
+   <div class="mode-card" id="modeGD" onclick="setMode('gdrive')"><div class="mc-icon"></div><div class="mc-title">Googleドライブ連携</div><div class="mc-desc">ドライブのフォルダから<br>自動読み込み</div></div>
+ </div>
 
-        <!-- ===== よくある質問 ===== -->
-        <div style="border-top:1px solid var(--g200);padding-top:20px">
-          <div style="font-size:14px;font-weight:800;color:var(--g900);margin-bottom:12px">❓ よくある質問</div>
-          <div style="display:grid;gap:8px">
-            <div style="background:var(--g50);border-radius:8px;padding:12px 16px">
-              <div style="font-size:12px;font-weight:700;color:var(--g900)">Q. どの期間のデータを入れればいい？</div>
-              <div style="font-size:11px;color:var(--g500);margin-top:3px;line-height:1.6">A. できるだけ長い期間がおすすめです。2024年〜現在までのデータを入れると、前年比（YoY）が自動計算されて比較分析できます。</div>
-            </div>
-            <div style="background:var(--g50);border-radius:8px;padding:12px 16px">
-              <div style="font-size:12px;font-weight:700;color:var(--g900)">Q. 文字化けする場合は？</div>
-              <div style="font-size:11px;color:var(--g500);margin-top:3px;line-height:1.6">A. CSVアップロード時に文字コードを「UTF-8」に切り替えてください。楽天RMSのCSVは通常「Shift_JIS」ですが、環境により異なる場合があります。</div>
-            </div>
-            <div style="background:var(--g50);border-radius:8px;padding:12px 16px">
-              <div style="font-size:12px;font-weight:700;color:var(--g900)">Q. データは保存される？</div>
-              <div style="font-size:11px;color:var(--g500);margin-top:3px;line-height:1.6">A. いいえ。すべてブラウザ上で処理され、サーバーへの送信は一切ありません。ページを閉じるとデータは消えます。Google ドライブ連携の場合もブラウザから直接読み取るだけです。</div>
-            </div>
-            <div style="background:var(--g50);border-radius:8px;padding:12px 16px">
-              <div style="font-size:12px;font-weight:700;color:var(--g900)">Q. ファイルの並び順やファイル名は関係ある？</div>
-              <div style="font-size:11px;color:var(--g500);margin-top:3px;line-height:1.6">A. 関係ありません。ファイルの中身を自動で判別（成果確定/発生/パートナー/請求）します。何ファイルでも、どんな順番でもOKです。</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+ <!-- CSVアップロードパネル -->
+ <div id="csvPanel" class="hd">
+   <div class="card card--a" style="margin-bottom:20px" id="uCard">
+     <div id="uFull" style="padding:20px 24px"><div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap"><div class="dz" id="dz" onclick="$('ci').click()"><span style="font-size:13px;font-weight:600;color:var(--g700)">CSVファイルをドラッグ＆ドロップ</span><span style="font-size:11px;color:var(--g400)">全種類対応・複数ファイル可（成果確定/発生・パートナーRP・請求RP）</span></div><div style="display:flex;flex-direction:column;gap:6px"><label style="font-size:11px;color:var(--g500);font-weight:600">文字コード</label><div style="display:flex;gap:4px" id="eF"></div></div></div>
+       <div class="cg"><div style="font-size:12px;font-weight:700;color:var(--g700);margin-bottom:8px">対応CSV（RMS >店舗様向け情報 >5 アフィリエイト）</div><div style="font-size:11px;color:var(--g500);line-height:1.8">成果確定（注文一覧）/ 成果発生（注文一覧）→ 商品別の日次明細<br>パートナーレポート → パートナー別 月次集計（クリック数あり）<br>請求レポート → 全体の月次サマリー（確定ベース）<br><strong style="color:var(--p)">2024年・2025年・2026年すべて対応（YoY自動計算）</strong></div></div>
+     </div>
+     <div id="uComp" class="uc hd"><div id="fTags" style="display:flex;gap:6px;flex-wrap:wrap;flex:1"></div><div style="display:flex;gap:6px;align-items:center;flex-shrink:0"><div style="display:flex;gap:3px" id="eC"></div><button class="ab" onclick="$('ci').click()">+ 追加</button></div></div>
+   </div>
+   <input type="file" accept=".csv" multiple class="fh" id="ci">
+ </div>
 
-  <!-- モード選択 -->
-  <div id="modeGuide" style="text-align:center;margin-bottom:16px;padding:18px 24px;background:var(--w);border-radius:10px;box-shadow:var(--sh)"><div style="font-size:18px;font-weight:800;color:var(--p);letter-spacing:-.3px">データの読み込み方法を選択してください</div><div style="font-size:12px;color:var(--g400);margin-top:4px">CSVファイルを直接アップロード、またはGoogleドライブから自動読み込み</div></div>
-  <div id="modeSelect" class="mode-sel">
-    <div class="mode-card" id="modeCSV" onclick="setMode('csv')"><div class="mc-icon">📁</div><div class="mc-title">CSVアップロード</div><div class="mc-desc">PCのCSVファイルを<br>ドラッグ＆ドロップ</div></div>
-    <div class="mode-card" id="modeGD" onclick="setMode('gdrive')"><div class="mc-icon">☁️</div><div class="mc-title">Googleドライブ連携</div><div class="mc-desc">ドライブのフォルダから<br>自動読み込み</div></div>
-  </div>
+ <!-- Googleドライブパネル -->
+ <div id="gdrivePanel" class="hd">
+   <div class="card card--a" style="margin-bottom:20px" id="gdrive-panel">
+     <div id="gd-login" style="padding:24px;text-align:center">
+       <div style="font-size:14px;font-weight:700;color:var(--g900);margin-bottom:4px">Googleドライブから読み込み</div>
+       <div style="font-size:12px;color:var(--g400);margin-bottom:16px;line-height:1.6">店舗フォルダ → 分析フォルダを選択してファイルを自動読み込み</div>
+       <button class="gd-btn" id="gd-loginBtn" onclick="GDrive.login()">Googleアカウントでログイン</button>
+       <div style="font-size:11px;color:var(--g400);margin-top:8px" id="gd-loginStatus"></div>
+     </div>
+     <div id="gd-folders" class="hd" style="padding:24px"><div class="step-indicator" id="gd-steps"></div><div id="gd-folderContent"></div></div>
+     <div id="gd-loading" class="hd" style="padding:24px"><div style="font-size:14px;font-weight:700;color:var(--g900);margin-bottom:8px" id="gd-loadMsg">読み込み中...</div><div class="progress-bar"><div class="progress-fill" id="gd-loadProg" style="width:0%"></div></div><div style="font-size:11px;color:var(--g400)" id="gd-loadDetail"></div></div>
+     <div id="gd-result" class="hd" style="padding:20px 24px"><div id="gd-resultContent"></div><div style="display:flex;gap:8px;margin-top:12px"><button class="gd-btn gd-btn--sm" onclick="GDrive.reload()">再読み込み</button><button class="gd-btn gd-btn--sm gd-btn--sub" onclick="GDrive.backToFolders()">フォルダ選択に戻る</button></div></div>
+   </div>
+ </div>
 
-  <!-- CSVアップロードパネル -->
-  <div id="csvPanel" class="hd">
-    <div class="card card--a" style="margin-bottom:20px" id="uCard">
-      <div id="uFull" style="padding:20px 24px"><div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap"><div class="dz" id="dz" onclick="$('ci').click()"><span style="font-size:28px;filter:grayscale(.6)">📁</span><span style="font-size:13px;font-weight:600;color:var(--g700)">CSVファイルをドラッグ＆ドロップ</span><span style="font-size:11px;color:var(--g400)">全種類対応・複数ファイル可（成果確定/発生・パートナーRP・請求RP）</span></div><div style="display:flex;flex-direction:column;gap:6px"><label style="font-size:11px;color:var(--g500);font-weight:600">文字コード</label><div style="display:flex;gap:4px" id="eF"></div></div></div>
-        <div class="cg"><div style="font-size:12px;font-weight:700;color:var(--g700);margin-bottom:8px">対応CSV（RMS > 店舗様向け情報 > 5 アフィリエイト）</div><div style="font-size:11px;color:var(--g500);line-height:1.8">成果確定（注文一覧）/ 成果発生（注文一覧）→ 商品別の日次明細<br>パートナーレポート → パートナー別 月次集計（クリック数あり）<br>請求レポート → 全体の月次サマリー（確定ベース）<br><strong style="color:var(--p)">2024年・2025年・2026年すべて対応（YoY自動計算）</strong></div></div>
-      </div>
-      <div id="uComp" class="uc hd"><div id="fTags" style="display:flex;gap:6px;flex-wrap:wrap;flex:1"></div><div style="display:flex;gap:6px;align-items:center;flex-shrink:0"><div style="display:flex;gap:3px" id="eC"></div><button class="ab" onclick="$('ci').click()">+ 追加</button></div></div>
-    </div>
-    <input type="file" accept=".csv" multiple class="fh" id="ci">
-  </div>
+ <!-- データチェック結果（共通） -->
+ <div id="dataCheck" class="hd" style="margin-bottom:20px"></div>
 
-  <!-- Googleドライブパネル -->
-  <div id="gdrivePanel" class="hd">
-    <div class="card card--a" style="margin-bottom:20px" id="gdrive-panel">
-      <div id="gd-login" style="padding:24px;text-align:center">
-        <div style="font-size:28px;margin-bottom:8px">☁️</div>
-        <div style="font-size:14px;font-weight:700;color:var(--g900);margin-bottom:4px">Googleドライブから読み込み</div>
-        <div style="font-size:12px;color:var(--g400);margin-bottom:16px;line-height:1.6">店舗フォルダ → 分析フォルダを選択してファイルを自動読み込み</div>
-        <button class="gd-btn" id="gd-loginBtn" onclick="GDrive.login()">Googleアカウントでログイン</button>
-        <div style="font-size:11px;color:var(--g400);margin-top:8px" id="gd-loginStatus"></div>
-      </div>
-      <div id="gd-folders" class="hd" style="padding:24px"><div class="step-indicator" id="gd-steps"></div><div id="gd-folderContent"></div></div>
-      <div id="gd-loading" class="hd" style="padding:24px"><div style="font-size:14px;font-weight:700;color:var(--g900);margin-bottom:8px" id="gd-loadMsg">読み込み中...</div><div class="progress-bar"><div class="progress-fill" id="gd-loadProg" style="width:0%"></div></div><div style="font-size:11px;color:var(--g400)" id="gd-loadDetail"></div></div>
-      <div id="gd-result" class="hd" style="padding:20px 24px"><div id="gd-resultContent"></div><div style="display:flex;gap:8px;margin-top:12px"><button class="gd-btn gd-btn--sm" onclick="GDrive.reload()">🔄 再読み込み</button><button class="gd-btn gd-btn--sm gd-btn--sub" onclick="GDrive.backToFolders()">フォルダ選択に戻る</button></div></div>
-    </div>
-  </div>
+ <!-- 空状態 -->
+ <div class="card card--g hd" id="empty" style="padding:40px 24px;text-align:center"><div style="font-size:36px;margin-bottom:10px;filter:grayscale(.7)"></div><div style="font-size:14px;font-weight:600;color:var(--g700);margin-bottom:4px">CSVをドロップしてダッシュボードを表示</div><div style="font-size:12px;color:var(--g400)">複数ファイル・複数月・複数年をまとめてアップロード可能</div></div>
 
-  <!-- データチェック結果（共通） -->
-  <div id="dataCheck" class="hd" style="margin-bottom:20px"></div>
-
-  <!-- 空状態 -->
-  <div class="card card--g hd" id="empty" style="padding:40px 24px;text-align:center"><div style="font-size:36px;margin-bottom:10px;filter:grayscale(.7)">📊</div><div style="font-size:14px;font-weight:600;color:var(--g700);margin-bottom:4px">CSVをドロップしてダッシュボードを表示</div><div style="font-size:12px;color:var(--g400)">複数ファイル・複数月・複数年をまとめてアップロード可能</div></div>
-
-  <!-- ダッシュボード -->
-  <div id="dash" class="hd"><div class="tabs" id="tBar"></div><div id="tC"></div></div>
+ <!-- ダッシュボード -->
+ <div id="dash" class="hd"><div class="tabs" id="tBar"></div><div id="tC"></div></div>
 </div>
 
 <!-- Google Identity Services -->
@@ -371,33 +370,33 @@ async function showFolderBrowser(){showView('gd-folders');updateSteps(1);var fc=
 try{var res=await driveList("'"+cur.id+"' in parents and mimeType='application/vnd.google-apps.folder' and trashed=false");var subs=res.files||[];fc.innerHTML='';
 /* パンくずリスト */
 var bc=document.createElement('div');bc.style.cssText='display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-bottom:14px;font-size:12px';
-folderPath.forEach(function(p,i){if(i>0){var sep=document.createElement('span');sep.textContent=' > ';sep.style.color='var(--g300)';bc.appendChild(sep)}
+folderPath.forEach(function(p,i){if(i>0){var sep=document.createElement('span');sep.textContent=' >';sep.style.color='var(--g300)';bc.appendChild(sep)}
 var link=document.createElement('span');link.textContent=p.name;link.style.cssText='color:'+(i<folderPath.length-1?'var(--p)':'var(--g900)')+';font-weight:'+(i<folderPath.length-1?'500':'700')+';cursor:'+(i<folderPath.length-1?'pointer':'default');
 if(i<folderPath.length-1){(function(idx){link.onclick=function(){folderPath=folderPath.slice(0,idx+1);showFolderBrowser()};link.onmouseenter=function(){link.style.textDecoration='underline'};link.onmouseleave=function(){link.style.textDecoration='none'}})(i)}
 bc.appendChild(link)});fc.appendChild(bc);
 /* 「このフォルダを選択」ボタン（ルート以外） */
 if(folderPath.length>1){var selBox=document.createElement('div');selBox.style.cssText='background:var(--al);border:1px solid rgba(16,185,129,.2);border-radius:10px;padding:14px 18px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px';
-var selInfo=document.createElement('div');selInfo.innerHTML='<div style="font-size:13px;font-weight:700;color:#065F46">📂 '+cur.name+'</div><div style="font-size:11px;color:var(--g500);margin-top:2px">このフォルダ内のCSVファイルを読み込みます</div>';
-var selBtn=document.createElement('button');selBtn.className='gd-btn';selBtn.textContent='✅ このフォルダを選択';selBtn.style.cssText='background:#10B981;font-size:13px;padding:10px 24px;white-space:nowrap';
+var selInfo=document.createElement('div');selInfo.innerHTML='<div style="font-size:13px;font-weight:700;color:#065F46">'+cur.name+'</div><div style="font-size:11px;color:var(--g500);margin-top:2px">このフォルダ内のCSVファイルを読み込みます</div>';
+var selBtn=document.createElement('button');selBtn.className='gd-btn';selBtn.textContent='このフォルダを選択';selBtn.style.cssText='background:#10B981;font-size:13px;padding:10px 24px;white-space:nowrap';
 selBtn.onclick=function(){selectedFolder=cur;startLoad(cur)};
 selBox.appendChild(selInfo);selBox.appendChild(selBtn);fc.appendChild(selBox)}
 /* サブフォルダ一覧 */
 if(subs.length){var t=document.createElement('div');t.style.cssText='font-size:12px;font-weight:700;color:var(--g700);margin-bottom:8px';t.textContent='フォルダ（'+subs.length+'件）';fc.appendChild(t);
 var recKw=GDrive.recommendKeyword||'';var list=document.createElement('div');list.className='folder-list';
-subs.forEach(function(f){var isRec=recKw&&f.name.includes(recKw);var c=document.createElement('div');c.className='folder-card'+(isRec?' active':'');c.innerHTML='<div class="fc-icon">'+(isRec?'📊':'📁')+'</div><div class="fc-name">'+f.name+'</div>'+(isRec?'<div class="fc-sub">← おすすめ</div>':'');
+subs.forEach(function(f){var isRec=recKw&&f.name.includes(recKw);var c=document.createElement('div');c.className='folder-card'+(isRec?' active':'');c.innerHTML='<div class="fc-name">'+f.name+'</div>'+(isRec?'<div class="fc-sub">← おすすめ</div>':'');
 c.onclick=function(){folderPath.push({id:f.id,name:f.name});showFolderBrowser()};list.appendChild(c)});fc.appendChild(list)
 }else if(folderPath.length<=1){fc.innerHTML+='<div class="warn-box">マイドライブにフォルダがありません</div>'}
 else{fc.innerHTML+='<div style="font-size:12px;color:var(--g400);padding:10px 0">サブフォルダはありません（上の「このフォルダを選択」で読み込みを開始できます）</div>'}
 }catch(e){fc.innerHTML='<div class="warn-box">フォルダの取得に失敗: '+e.message+'</div>'}}
 function getPathLabel(){return folderPath.map(function(p){return p.name}).join(' / ')}
 async function startLoad(folder){showView('gd-loading');updateSteps(2);_$('gd-loadMsg').textContent=getPathLabel()+' を読み込み中...';_$('gd-loadProg').style.width='5%';_$('gd-loadDetail').textContent='ファイルを検索中...';try{var res=await driveList("'"+folder.id+"' in parents and trashed=false and mimeType!='application/vnd.google-apps.folder'");var files=(res.files||[]).map(function(f){f.sub='';return f});_$('gd-loadDetail').textContent='サブフォルダを検索中...';var subRes=await driveList("'"+folder.id+"' in parents and mimeType='application/vnd.google-apps.folder' and trashed=false");var subs=subRes.files||[];for(var si=0;si<subs.length;si++){_$('gd-loadProg').style.width=Math.round(5+si/Math.max(subs.length,1)*10)+'%';_$('gd-loadDetail').textContent='サブフォルダ検索中... '+subs[si].name;var sf=await driveList("'"+subs[si].id+"' in parents and trashed=false and mimeType!='application/vnd.google-apps.folder'");(sf.files||[]).forEach(function(f){f.sub=subs[si].name;files.push(f)})}if(!files.length){_$('gd-loadDetail').textContent='ファイルが見つかりません';setTimeout(function(){showFolderBrowser()},2000);return}_$('gd-loadProg').style.width='15%';if(typeof GDrive.onFilesReady==='function'){await GDrive.onFilesReady(files,{name:getPathLabel()},folder)}else{showResult('完了',files.length+'件のファイルを検出しました')}}catch(e){_$('gd-loadDetail').innerHTML='<span style="color:#DC2626">エラー: '+e.message+'</span>'}}
-function showResult(t,m){showView('gd-result');_$('gd-resultContent').innerHTML='<div class="ok-box">✅ <strong>'+t+'</strong> — '+m+'</div>'}
+function showResult(t,m){showView('gd-result');_$('gd-resultContent').innerHTML='<div class="ok-box"><strong>'+t+'</strong>— '+m+'</div>'}
 var GDrive={recommendKeyword:'アフィリ',onFilesReady:null,
 login:function(){if(!tokenClient){try{initGIS()}catch(e){_$('gd-loginStatus').textContent='認証ライブラリの読み込みに失敗。ページを再読み込みしてください。';return}}_$('gd-loginBtn').disabled=true;_$('gd-loginStatus').textContent='ログイン中...';tokenClient.requestAccessToken()},
 readFile:function(fid,mime){return driveText(fid,mime)},
 setProgress:function(cur,tot,fn){var pct=15+Math.round(cur/tot*80);_$('gd-loadProg').style.width=pct+'%';_$('gd-loadDetail').textContent='読み込み中 ('+(cur+1)+'/'+tot+') '+(fn||'')},
-showResult:showResult,showError:function(m){showView('gd-result');_$('gd-resultContent').innerHTML='<div class="warn-box"><strong>❌ エラー</strong><br>'+m+'</div>'},
-showWarnings:function(w){if(!w.length)return;_$('gd-resultContent').innerHTML+='<div class="warn-box warn-box--yellow"><strong>⚠️ 警告（'+w.length+'件）</strong><br>'+w.join('<br>')+'</div>'},
+showResult:showResult,showError:function(m){showView('gd-result');_$('gd-resultContent').innerHTML='<div class="warn-box"><strong>エラー</strong><br>'+m+'</div>'},
+showWarnings:function(w){if(!w.length)return;_$('gd-resultContent').innerHTML+='<div class="warn-box warn-box--yellow"><strong>警告（'+w.length+'件）</strong><br>'+w.join('<br>')+'</div>'},
 showInfo:function(m){_$('gd-resultContent').innerHTML+='<div class="info-box">'+m+'</div>'},
 appendResult:function(h){_$('gd-resultContent').innerHTML+=h},
 reload:function(){if(selectedFolder)startLoad(selectedFolder)},backToFolders:function(){showFolders()},
@@ -489,10 +488,11 @@ function bL(O){var m={};O.forEach(function(o){if(!m[o.iid])m[o.iid]=o.nm});retur
 function calcPct(cur,prev){if(!prev||prev===0)return null;return((cur-prev)/prev*100).toFixed(1)}
 function yoyYM(ym){var p=ym.split('-');return(parseInt(p[0])-1)+'-'+p[1]} // 前年同月
 function prevYM(ym){var d=new Date(ym+'-01');d.setMonth(d.getMonth()-1);return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')}
-function diffTag(cur,prev){
+function diffTag(cur,prev,isCount){
   if(prev==null||prev===0)return'<span style="color:var(--g400)">—</span>';
   var pct=calcPct(cur,prev),d=cur-prev;
-  return'<span class="'+(d>=0?'up':'dn')+'">'+(pct>=0?'+':'')+pct+'%（'+fD(d)+'）</span>';
+  var diffStr=isCount?(d>=0?'+':'−')+Math.abs(d).toLocaleString():fD(d);
+  return'<span class="'+(d>=0?'up':'dn')+'">'+(pct>=0?'+':'')+pct+'%（'+diffStr+'）</span>';
 }
 
 // Tooltip
@@ -699,7 +699,7 @@ function render(){
   var A=S.A,hf=S.fn.length>0;
   if(S.mode==='csv'){
     $('uFull').classList.toggle('hd',hf);$('uComp').classList.toggle('hd',!hf);
-    if(hf){var tg=$('fTags');tg.innerHTML='';S.fn.forEach(function(f){var s=document.createElement('span');s.className='ft';s.textContent='✓ '+f;tg.appendChild(s)})}
+    if(hf){var tg=$('fTags');tg.innerHTML='';S.fn.forEach(function(f){var s=document.createElement('span');s.className='ft';s.textContent=f;tg.appendChild(s)})}
     rE('eF','eb');rE('eC','es');
   }
   $('empty').classList.toggle('hd',!!A||S.mode!=='csv');
@@ -720,7 +720,7 @@ function showDataCheck(){
   var allYM=A.allYM,pYMs=A.pYMs;
 
   // ① データの仕組み説明
-  ct.innerHTML+='<div class="card" style="margin-bottom:12px"><div style="padding:14px 22px"><div class="ib"><strong>📋 データの仕組み</strong><br><span style="font-size:11px;line-height:1.8">・<strong>成果確定CSV</strong>：発生月から約2ヶ月後に楽天から発行されます（例：1月発生分 → 3月に確定）<br>・<strong>パートナーRP</strong>：発生月ベースで翌月に発行されます（ズレなし）<br>・<strong>請求レポート</strong>：確定月ベースの月次サマリーです</span></div>';
+  ct.innerHTML+='<div class="card" style="margin-bottom:12px"><div style="padding:14px 22px"><div class="ib"><strong>データの仕組み</strong><br><span style="font-size:11px;line-height:1.8">・<strong>成果確定CSV</strong>：発生月から約2ヶ月後に楽天から発行されます（例：1月発生分 → 3月に確定）<br>・<strong>パートナーRP</strong>：発生月ベースで翌月に発行されます（ズレなし）<br>・<strong>請求レポート</strong>：確定月ベースの月次サマリーです</span></div>';
 
   // ③ 欠損チェック（直近2ヶ月除外）
   var allMonths=new Set();allYM.forEach(function(y){allMonths.add(y)});pYMs.forEach(function(y){allMonths.add(y)});
@@ -740,15 +740,15 @@ function showDataCheck(){
 
   // ② 未確定月の正常表示
   if(pendingFixed.length>0){
-    ct.querySelector('.ib').insertAdjacentHTML('afterend','<div style="margin-top:10px;background:var(--pl);border-radius:8px;padding:10px 16px;border:1px solid rgba(30,58,95,.13);font-size:12px;color:var(--g700)"><strong>🕐 未確定（正常）</strong> — 成果確定: '+pendingFixed.join(', ')+' は確定待ちのため未発行です</div>');
+    ct.querySelector('.ib').insertAdjacentHTML('afterend','<div style="margin-top:10px;background:var(--pl);border-radius:8px;padding:10px 16px;border:1px solid rgba(30,58,95,.13);font-size:12px;color:var(--g700)"><strong>未確定（正常）</strong>— 成果確定: '+pendingFixed.join(', ')+' は確定待ちのため未発行です</div>');
   }
   if(warnings.length>0){
-    ct.querySelector('.ib').insertAdjacentHTML('afterend','<div style="margin-top:10px" class="warn-box warn-box--yellow"><strong>⚠️ 警告（'+warnings.length+'件）</strong><br>'+warnings.join('<br>')+'</div>');
+    ct.querySelector('.ib').insertAdjacentHTML('afterend','<div style="margin-top:10px" class="warn-box warn-box--yellow"><strong>警告（'+warnings.length+'件）</strong><br>'+warnings.join('<br>')+'</div>');
   }
 
   // 読み込み状況サマリー
   var fN=allYM.length,pN=pYMs.length;
-  ct.querySelector('.ib').insertAdjacentHTML('afterend','<div style="margin-top:10px" class="ok-box">✅ 読み込み済み: 成果確定 '+fN+'ヶ月 / パートナーRP '+pN+'ヶ月</div>');
+  ct.querySelector('.ib').insertAdjacentHTML('afterend','<div style="margin-top:10px" class="ok-box">読み込み済み: 成果確定 '+fN+'ヶ月 / パートナーRP '+pN+'ヶ月</div>');
 
   ct.innerHTML+='</div></div>';
 }
@@ -835,11 +835,11 @@ function rOv(tc,A){
     smSorted.forEach(function(s){
       var y=smM[yoyYM(s.ym)];
       var yA=y?diffTag(s.a,y.a):D;
-      var yCl=y&&y.cl>0?diffTag(s.cl,y.cl):D;
-      var ySl=y&&y.sl>0?diffTag(s.sl,y.sl):D;
+      var yCl=y&&y.cl>0?diffTag(s.cl,y.cl,true):D;
+      var ySl=y&&y.sl>0?diffTag(s.sl,y.sl,true):D;
       var yRw=y&&y.rw>0?diffTag(s.rw,y.rw):D;
       var yRaA=y&&y.raA>0?diffTag(s.raA,y.raA):D;
-      var yRaSl=y&&y.raSl>0?diffTag(s.raSl,y.raSl):D;
+      var yRaSl=y&&y.raSl>0?diffTag(s.raSl,y.raSl,true):D;
       var yRaRw=y&&y.raRw>0?diffTag(s.raRw,y.raRw):D;
       th+='<tr><td class="fb">'+s.ym+'</td><td class="ar">'+s.cl.toLocaleString()+'</td><td class="ar">'+yCl+'</td><td class="ar fb cp">'+fmt(s.a)+'</td><td class="ar">'+yA+'</td><td class="ar">'+s.sl.toLocaleString()+'</td><td class="ar">'+ySl+'</td><td class="ar">'+fmt(s.rw)+'</td><td class="ar">'+yRw+'</td><td class="ar" style="border-left:2px solid var(--g200)">'+fmt(s.raA)+'</td><td class="ar">'+yRaA+'</td><td class="ar">'+s.raSl.toLocaleString()+'</td><td class="ar">'+yRaSl+'</td><td class="ar">'+fmt(s.raRw)+'</td><td class="ar">'+yRaRw+'</td></tr>';
     });
@@ -852,10 +852,10 @@ function rOv(tc,A){
       var yoy=A.mMap[yoyYM(m.ym)];
       var yoyA=yoy?yoy.a:(A.blMap[yoyYM(m.ym)]?A.blMap[yoyYM(m.ym)].a:null);
       var yoyH=yoyA!=null?diffTag(m.a,yoyA):'<span style="color:var(--g400)">—</span>';
-      var yoySl=yoy&&yoy.sl>0?diffTag(m.sl,yoy.sl):'<span style="color:var(--g400)">—</span>';
-      var yoyCl=yoy&&yoy.cl>0?diffTag(m.cl,yoy.cl):'<span style="color:var(--g400)">—</span>';
+      var yoySl=yoy&&yoy.sl>0?diffTag(m.sl,yoy.sl,true):'<span style="color:var(--g400)">—</span>';
+      var yoyCl=yoy&&yoy.cl>0?diffTag(m.cl,yoy.cl,true):'<span style="color:var(--g400)">—</span>';
       var yoyRw=yoy&&yoy.rw>0?diffTag(m.rw,yoy.rw):'<span style="color:var(--g400)">—</span>';
-      var yoyAct=yoy&&yoy.act>0?diffTag(m.act,yoy.act):'<span style="color:var(--g400)">—</span>';
+      var yoyAct=yoy&&yoy.act>0?diffTag(m.act,yoy.act,true):'<span style="color:var(--g400)">—</span>';
       th+='<tr><td class="fb">'+m.ym+'</td><td class="ar fb cp">'+fmt(m.a)+'</td><td class="ar">'+yoyH+'</td><td class="ar">'+m.sl+'件</td><td class="ar">'+yoySl+'</td><td class="ar">'+(m.cl>0?m.cl.toLocaleString():'<span style="color:var(--g400)">—</span>')+'</td><td class="ar">'+yoyCl+'</td><td class="ar">'+fmt(m.rw)+'</td><td class="ar">'+yoyRw+'</td><td class="ar">'+(m.act>0?m.act+'人':'—')+'</td><td class="ar">'+yoyAct+'</td></tr>';
     });
     th+='</tbody></table>';tw.innerHTML=th;ms.b.appendChild(tw);ms.w.style.marginBottom='16px';fg.appendChild(ms.w);
@@ -936,7 +936,7 @@ function rPt(tc,A){
   // パートナー売上ランキング（全月表示）
   var rs=sec('パートナー売上ランキング（'+pl.length+'人）','a');
   var hint=document.createElement('div');hint.style.cssText='font-size:11px;color:var(--g400);margin-bottom:10px';
-  hint.textContent='💡 パートナーをクリックすると、月次推移グラフが連動します';
+  hint.textContent='パートナーをクリックすると、月次推移グラフが連動します';
   rs.b.appendChild(hint);
   var tw2=document.createElement('div');tw2.id='ptRankC';tw2.style.cssText='overflow-x:auto;max-height:700px;overflow-y:auto';
   rs.b.appendChild(tw2);rs.w.style.marginBottom='16px';fg.appendChild(rs.w);
@@ -1062,12 +1062,12 @@ function rPtMon(){
   });
 
   // 売上 月次棒グラフ（YoY折れ線付き）
-  var slLabel=document.createElement('div');slLabel.style.cssText='font-size:13px;font-weight:700;color:var(--g900);margin-bottom:6px';slLabel.textContent='📊 売上推移';ct.appendChild(slLabel);
+  var slLabel=document.createElement('div');slLabel.style.cssText='font-size:13px;font-weight:700;color:var(--g900);margin-bottom:6px';slLabel.textContent='売上推移';ct.appendChild(slLabel);
   var chartDiv=document.createElement('div');chartDiv.style.cssText='width:100%;margin-bottom:20px';
   ct.appendChild(chartDiv);
 
   // クリック数 月次棒グラフ
-  var clLabel=document.createElement('div');clLabel.style.cssText='font-size:13px;font-weight:700;color:var(--g900);margin-bottom:6px';clLabel.textContent='🖱️ クリック数推移';ct.appendChild(clLabel);
+  var clLabel=document.createElement('div');clLabel.style.cssText='font-size:13px;font-weight:700;color:var(--g900);margin-bottom:6px';clLabel.textContent='クリック数推移';ct.appendChild(clLabel);
   var clkRows=rows.map(function(r){
     var yoyR2=rowMap[yoyYM(r.ym)];
     return{ym:r.ym,a:r.cl,yoy:yoyR2&&yoyR2.cl>0?parseFloat(((r.cl-yoyR2.cl)/yoyR2.cl*100).toFixed(1)):null};
@@ -1087,7 +1087,7 @@ function rPtMon(){
   rows.forEach(function(r){
     var yoyR2=rowMap[yoyYM(r.ym)];
     var yoyH=r.yoy!==null?diffTag(r.a,yoyR2.a):'<span style="color:var(--g400)">—</span>';
-    var clkYoy=yoyR2&&yoyR2.cl>0?diffTag(r.cl,yoyR2.cl):'<span style="color:var(--g400)">—</span>';
+    var clkYoy=yoyR2&&yoyR2.cl>0?diffTag(r.cl,yoyR2.cl,true):'<span style="color:var(--g400)">—</span>';
     var tr2=document.createElement('tr');
     tr2.innerHTML='<td class="fb">'+r.ym+'</td><td class="ar fb cp">'+fmt(r.a)+'</td><td class="ar">'+yoyH+'</td><td class="ar">'+r.sl+'件</td><td class="ar">'+r.cl.toLocaleString()+'</td><td class="ar">'+clkYoy+'</td><td class="ar">'+fmt(r.rw)+'</td>';
     tbody.appendChild(tr2);
@@ -1130,7 +1130,7 @@ function rPr(tc,A){
   A.aYM.forEach(function(ym){var b=document.createElement('button');b.className='eb'+(S.sm===ym?' on':'');b.textContent=ym.slice(2);b.onclick=function(){S.sm=ym;rPC2()};filterDiv.appendChild(b)});
   ps.r.insertBefore(filterDiv,ps.r.firstChild);
   var hint=document.createElement('div');hint.style.cssText='font-size:11px;color:var(--g400);margin-bottom:10px';
-  hint.textContent='💡 商品をクリックすると、チャートと下の月次推移が連動します';
+  hint.textContent='商品をクリックすると、チャートと下の月次推移が連動します';
   ps.b.appendChild(hint);
   var pc=document.createElement('div');pc.id='pcC';ps.b.appendChild(pc);ps.w.style.marginBottom='16px';fg.appendChild(ps.w);
 
